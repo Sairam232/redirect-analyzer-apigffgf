@@ -1,0 +1,35 @@
+name = "redirect-analyzer-apigffgf"
+main = "worker.js"
+compatibility_date = "2024-10-01"
+
+# KV namespaces for data storage (replaces SQLite)
+[[kv_namespaces]]
+binding = "RATE_LIMITS"
+id = "f2a1c765fefb4fb9bf0e408c59cb1f34"
+
+[[kv_namespaces]]
+binding = "ANALYTICS_DATA" 
+id = "7b115a1186de4e44b5918df8d53edf22"
+
+[[kv_namespaces]]
+binding = "API_KEYS"
+id = "849680b3055041e69b2f64b68616ae06"
+
+# Environment variables
+[vars]
+ENVIRONMENT = "production"
+API_VERSION = "1.0.0"
+MAX_REDIRECTS = "15"
+REQUEST_TIMEOUT = "8000"
+
+# Worker limits and configuration
+[limits]
+cpu_ms = 30000
+
+# Development environment
+[env.development]
+name = "redirect-analyzer-api-dev"
+
+[env.development.vars]
+ENVIRONMENT = "development"
+API_VERSION = "1.0.0-dev"
